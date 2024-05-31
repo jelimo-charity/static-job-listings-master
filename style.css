@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+}
+body{
+    background-color: hsl(180, 52%, 96%);
 }
 .header{
     background: url('./images/bg-header-desktop.svg');
@@ -16,15 +20,16 @@
     flex-direction: column;
     margin-top: 40px;
     margin-left: 50px;
-    border: 1px solid red;
 }
 .jobCard{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 40px;
-    border: 1px solid blue;
     margin-right: 60px;
+    background-color: #fff;
+    width: 80%;
+    border-left: 2px solid #45b099;
 }
 .leftSide{
     display: flex;
@@ -36,6 +41,7 @@
 }
 .logo{
     margin-right: 10px;
+    margin-bottom: 10px;
     height: 70px;
 }
 .jobDesc{
@@ -62,4 +68,21 @@ button{
     height: 30px;
     padding: 5px 5px;
     margin-left: 10px;
+    color: #45b099;
+    background-color:  hsl(180, 31%, 95%);
+    border: none;
+    border-radius: 3px;
 }
+/* #new{
+    margin-left: 5px;
+    background-color: #45b099;
+    padding: 4px;
+    border-radius: 10px;
+}
+#featured{
+    margin-left: 5px;
+    background-color: #111;
+    color: #fff;
+    padding: 4px;
+    border-radius: 10px;
+} */

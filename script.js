@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     let jobData = [];
     let filters = {
-      role: null,
-      level: null,
-      languages: new Set(),
+        role: null,
+        level: null,
+        languages: new Set(),
     };
   
     const fetchData = async () => {
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
       jobs.forEach(job => {
         const jobCard = jobCardTemplate.cloneNode(true);
         jobCard.style.display = 'flex';
-        jobCard.id = ''; // Clear the ID so that it is not duplicated
   
         jobCard.querySelector('#logo').src = job.logo;
         jobCard.querySelector('#company').textContent = job.company;
@@ -36,21 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
         jobCard.querySelector('#location').textContent = job.location;
   
         const categories = jobCard.querySelector('#categories');
-        categories.innerHTML = ''; // Clear any existing categories
   
-        const roleButton = createFilterButton(job.role, 'role');
+        const roleButton = createFilterButton(job.role);
         categories.appendChild(roleButton);
   
-        const levelButton = createFilterButton(job.level, 'level');
+        const levelButton = createFilterButton(job.level);
         categories.appendChild(levelButton);
   
         job.languages.forEach(language => {
-          const langButton = createFilterButton(language, 'languages');
+          const langButton = createFilterButton(language);
           categories.appendChild(langButton);
         });
   
         job.tools.forEach(tool => {
-          const toolButton = createFilterButton(tool, 'tools');
+          const toolButton = createFilterButton(tool);
           categories.appendChild(toolButton);
         });
   
@@ -58,27 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
   
-    const createFilterButton = (text, type) => {
+    const createFilterButton = (text) => {
       const button = document.createElement('button');
       button.textContent = text;
-      button.addEventListener('click', () => updateFilters(text, type));
+      button.addEventListener('click', () => filterJobs(text));
       return button;
     };
   
-    const updateFilters = (value, type) => {
-      if (type === 'role' || type === 'level') {
-        filters[type] = filters[type] === value ? null : value;
-      } else if (type === 'languages') {
-        if (filters.languages.has(value)) {
-          filters.languages.delete(value);
-        } else {
-          filters.languages.add(value);
-        }
-      }
+    const filterJobs = () => {
+        const filteredJobs = jobData.filter(job => {
+            const matchesRole = filters.role ? job.role === filters.role : true;
+            const matchesLevel = filters.level ? job.level === filters.level : true;
+            const matchesLanguages = filters.languages.size > 0 ? job.languages.some(lang => filters.languages.has(lang)) : true;
+
+            return matchesRole && matchesLevel && matchesLanguages;
+        });
+        displayJobs(filterJobs);
     };
+fetchData();
+
+
   
-  
-  
-    fetchData();
   });
   
