@@ -3,7 +3,63 @@
     padding: 0;
     box-sizing: border-box;
 }
+.header{
+    background: url('./images/bg-header-desktop.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: cover;
+    height: 70px;
+}
 .wrapper{
     display: flex;
+    flex-direction: row;
     flex-direction: column;
+    margin-top: 40px;
+    margin-left: 50px;
+    border: 1px solid red;
+}
+.jobCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    border: 1px solid blue;
+    margin-right: 60px;
+}
+.leftSide{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+}
+.logo{
+    margin-right: 10px;
+    height: 70px;
+}
+.jobDesc{
+    display: flex;
+    flex-direction: column;
+    
+}
+.top{
+    display: flex;
+    flex-direction: row;
+}
+.bottom{
+    display: flex;
+    flex-direction: row;
+}
+.rightSide{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+}
+button{
+    height: 30px;
+    padding: 5px 5px;
+    margin-left: 10px;
 }
